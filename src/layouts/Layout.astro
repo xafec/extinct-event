@@ -1,34 +1,54 @@
 ---
-import CommonHead from "../components/CommonHead.astro";
-import ScrollToTopButton from "../components/ScrollTopBtn";
-import { Image } from "astro:assets";
-import background from "../images/background.webp";
 import "@fontsource/twinkle-star";
+import { Image } from "astro:assets";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ScrollToTopButton from "../components/ScrollTopBtn";
+import background from "../images/background.webp";
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="ru">
   <head>
-    <CommonHead />
+    <BaseHead title={title} />
   </head>
   <body
     class="relative bg-neutral-950 text-white selection:bg-purple-200/20 selection:text-gray-400 min-h-screen"
   >
-    <div class="pointer-events-none absolute h-screen object-cover">
+    <div class="pointer-events-none absolute min-h-screen object-cover">
       <Image
         src={background}
         alt="background"
         class="fixed h-screen w-screen object-cover opacity-20 blur-3xl"
       />
     </div>
+    <svg
+      class="pointer-events-none fixed isolate z-50 h-full w-full opacity-70 mix-blend-soft-light"
+    >
+      <filter id="noise">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.7"
+          numOctaves="4"
+          stitchTiles="stitch"></feTurbulence>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#noise)"></rect>
+    </svg>
 
-    <div class="relative z-10">
+    <div class="relative z-10" id="home">
+      <Header />
+
       <slot />
+
+      <Footer />
       <ScrollToTopButton client:load />
     </div>
     <style is:global>
       html {
-        font-family: "Nunito", sans-serif;
+        font-family: "Montserrat", sans-serif;
       }
     </style>
   </body>

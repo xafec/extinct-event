@@ -1,0 +1,40 @@
+---
+import { IconHeart, IconHeartFilled } from "@tabler/icons-react";
+
+var year = new Date().getFullYear();
+---
+
+<footer class="mx-auto mt-auto w-full px-4 text-sm xl:px-0">
+  <div class="mx-auto w-full py-6 xl:w-[1120px]">
+    <p
+      class="my-4 flex items-center justify-center border-b border-gray-100/10 pb-4 text-center sm:pb-6"
+    >
+      Developed with
+      <span class="group">
+        <IconHeart width={16} className="mx-1 group-hover:hidden" />
+        <IconHeartFilled
+          width={16}
+          className="mx-1 text-red-500  hidden group-hover:block animate-heartbeat animate-iteration-count-infinite animate-duration-800"
+        />
+      </span>
+      &
+      <span>
+        <a
+          class="mx-1 transition-all hover:underline font-medium hover:text-[#e43a99]"
+          target="_blank"
+          href="https://astro.build/"
+          rel="noreferrer">Astro</a
+        >
+      </span>
+      by Xafec
+    </p>
+    <div class="text-center sm:flex sm:items-center sm:justify-between">
+      <p>© {year} - All rights reserved... Nah lol</p>
+
+      <p class="mt-2 divide-x sm:mt-0">
+        <a class="me-1 hover:underline" href="/">en</a>
+        <!-- <a class="ps-1.5 hover:underline" href="/ru">ru</a> -->
+      </p>
+    </div>
+  </div>
+</footer>

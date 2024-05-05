@@ -1,16 +1,64 @@
 ---
-import SectionContainer from "../components/SectionContainer.astro";
 import Layout from "../layouts/Layout.astro";
+import CopyEmail from "../components/CopyEmail";
+import BadgeSocial from "../components/BadgeSocial.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import {
+  IconBrandGithub,
+  IconBrandDiscord,
+  IconMapPin,
+} from "@tabler/icons-react";
+
+export const prerender = true;
 ---
 
-<Layout>
+<Layout title="Xafec's Portfolio">
   <main class="px-4">
-    <SectionContainer class="py-20">
-      <h1
-        class="-translate-x-0.5 sm:-translate-x-1 font-black w-full text-4xl lg:text-5xl xl:text-6xl"
-      >
-        Hi, I'm Xafec
+    <SectionContainer class="mt-20 flex flex-col items-center gap-6">
+      <h1 class="font-black text-4xl sm:text-5xl md:text-6xl">
+        👋Hey, I'm Xafec.
       </h1>
+      <div class="sm:flex items-center">
+        <span class="text-xl sm:text-2xl font-semibold flex text-center"
+          >A passionate web developer and student</span
+        >
+      </div>
+      <div class="sm:flex items-center">
+        <span class="text-sm flex items-center gap-1 w-max">
+          <IconMapPin width={16} />
+          <span class="hidden sm:block">Moscow</span><span class="sm:hidden"
+            >MSK</span
+          > • GMT+3
+        </span>
+      </div>
+      <div class="md:max-w-[700px] max-w-full text-lg sm:text-xl">
+        <div
+          class="mt-2 flex gap-2 translate-x-1 flex-col sm:flex-row items-center"
+        >
+          <a
+            href="https://signal.me/#eu/0ieJruFSNtzs8RgLskTmga9NsYnvB0nVnWTP8nH-yHby8w1kEOtEtryxApfckAKV"
+            target="_blank"
+            rel="noreferrer"
+            class="block translate-y-[1px] w-max sm:inline text-green-500 animate-background-shine cursor-pointer justify-center rounded-md border border-green-500 bg-[linear-gradient(110deg,#22c55e1a,50%,#22c55e66,55%,#22c55e1a)] bg-[length:250%_100%] px-2.5 py-0.5 text-sm"
+          >
+            Available for new projects
+          </a>
+          <CopyEmail client:load />
+          <div class="flex gap-2">
+            <BadgeSocial href="https://github.com/xafec/" class="">
+              <span class="hidden sm:block"> GitHub </span>
+              <IconBrandGithub width={16} />
+            </BadgeSocial>
+            <BadgeSocial
+              href="https://discord.com/users/1101222625956597871/"
+              class=""
+            >
+              <span class="hidden sm:block"> Discord </span>
+              <IconBrandDiscord width={16} />
+            </BadgeSocial>
+          </div>
+        </div>
+      </div>
     </SectionContainer>
   </main>
 </Layout>
