@@ -11,4 +11,10 @@ export default defineConfig({
   adapter: vercel({
     imageService: true,
   }),
+  server: {
+    headers: {
+      "Cache-Control": "public, max-age=31536000, immutable",
+      "cdn-cache-control": "public, max-age=31536000, immutable",
+    },
+  },
 });
