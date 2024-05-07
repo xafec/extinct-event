@@ -2,12 +2,13 @@
 import "@fontsource/twinkle-star";
 import { Image } from "astro:assets";
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ScrollToTopButton from "../components/ScrollTopBtn";
 import background from "../images/background.webp";
 
 const { title } = Astro.props;
+
+import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <!doctype html>
@@ -43,6 +44,7 @@ const { title } = Astro.props;
 
       <slot />
 
+      <SpeedInsights />
       <Footer />
       <ScrollToTopButton client:load />
     </div>
