@@ -6,8 +6,6 @@ import Footer from "../components/Footer.astro";
 import background from "../images/background.webp";
 
 const { title } = Astro.props;
-
-import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <!doctype html>
@@ -41,7 +39,6 @@ import SpeedInsights from "@vercel/speed-insights/astro";
     <div class="relative z-10" id="home">
       <slot />
 
-      <SpeedInsights />
       <Footer />
     </div>
     <style is:global>
