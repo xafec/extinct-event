@@ -1,25 +1,27 @@
 ---
+Astro.response.headers.set("Cache-Control", "public, max-age=3600");
+
 import Layout from "../layouts/Layout.astro";
-import CopyEmail from "../components/CopyEmail";
 import BadgeSocial from "../components/BadgeSocial.astro";
+import KnowledgeCard from "../components/KnowledgeCard.astro";
 import SectionContainer from "../components/SectionContainer.astro";
-import {
-  IconBrandGithub,
-  IconBrandDiscord,
-  IconMapPin,
-} from "@tabler/icons-react";
+import RepoCard from "../components/RepoCard.astro";
+import { IconMapPin } from "@tabler/icons-react";
+import { links } from "../data/social_links";
+import { languages } from "../data/languages_links";
+import { repos } from "../data/repos";
 
 export const prerender = true;
 ---
 
 <Layout title="Xafec's Portfolio">
-  <main class="px-4">
-    <SectionContainer class="mt-20 flex flex-col items-center gap-6">
+  <main class="px-4 animate-fade-in animate-delay-200 sm:pt-20 pt-16 mb-10">
+    <SectionContainer class="flex flex-col gap-2">
       <h1 class="font-black text-4xl sm:text-5xl md:text-6xl">
-        👋Hey, I'm Xafec.
+        Hello there, I'm Xafec.
       </h1>
       <div class="sm:flex items-center">
-        <span class="text-xl sm:text-2xl font-semibold flex text-center"
+        <span class="text-xl sm:text-2xl font-semibold"
           >A passionate web developer and student</span
         >
       </div>
@@ -31,32 +33,44 @@ export const prerender = true;
           > • GMT+3
         </span>
       </div>
-      <div class="md:max-w-[700px] max-w-full text-lg sm:text-xl">
-        <div
-          class="mt-2 flex gap-2 translate-x-1 flex-col sm:flex-row items-center"
-        >
-          <a
-            href="https://signal.me/#eu/0ieJruFSNtzs8RgLskTmga9NsYnvB0nVnWTP8nH-yHby8w1kEOtEtryxApfckAKV"
-            target="_blank"
-            rel="noreferrer"
-            class="block translate-y-[1px] w-max sm:inline text-green-500 animate-background-shine cursor-pointer justify-center rounded-md border border-green-500 bg-[linear-gradient(110deg,#22c55e1a,50%,#22c55e66,55%,#22c55e1a)] bg-[length:250%_100%] px-2.5 py-0.5 text-sm"
-          >
-            Available for new projects
-          </a>
-          <CopyEmail client:load />
-          <div class="flex gap-2">
-            <BadgeSocial href="https://github.com/xafec/" class="">
-              <span class="hidden sm:block"> GitHub </span>
-              <IconBrandGithub width={16} />
-            </BadgeSocial>
-            <BadgeSocial
-              href="https://discord.com/users/1101222625956597871/"
-              class=""
-            >
-              <span class="hidden sm:block"> Discord </span>
-              <IconBrandDiscord width={16} />
-            </BadgeSocial>
-          </div>
+    </SectionContainer>
+    <SectionContainer class="mt-16">
+      <div class="max-w-full text-lg sm:text-xl">
+        <span class="text-xl sm:text-3xl font-semibold">Contact</span>
+        <p class="text-lg text-zinc-300/80">My social media accounts.</p>
+        <div class="mt-2 grid gap-3 md:grid-cols-2 w-full">
+          {
+            links.map((link) => (
+              <BadgeSocial links={link}>
+                <link.icon className="h-8 w-8 transition duration-200 text-zinc-200/75" />
+              </BadgeSocial>
+            ))
+          }
+        </div>
+      </div>
+    </SectionContainer>
+    <SectionContainer class="mt-16">
+      <div class="max-w-full text-lg sm:text-xl">
+        <span class="text-xl sm:text-3xl font-semibold">Repositories</span>
+        <p class="text-lg text-zinc-300/80">My Github Open Source Projects.</p>
+        <div class="mt-2 grid grid-cols-1 gap-3 lg:grid-cols-2">
+          {repos.map((repo) => <RepoCard repo={repo} />)}
+        </div>
+      </div>
+    </SectionContainer>
+    <SectionContainer class="mt-16">
+      <div class="max-w-full text-lg sm:text-xl">
+        <span class="text-xl sm:text-3xl font-semibold">
+          Languages and technologies I use
+        </span>
+        <div class="mt-2 grid gap-2 sm:grid-cols-3 md:grid-cols-4 w-full">
+          {
+            languages.map((lang) => (
+              <KnowledgeCard title={lang.name}>
+                <lang.icon className="h-6 w-6 transition duration-200 text-zinc-200/75" />
+              </KnowledgeCard>
+            ))
+          }
         </div>
       </div>
     </SectionContainer>

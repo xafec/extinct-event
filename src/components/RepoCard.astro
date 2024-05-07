@@ -1,0 +1,30 @@
+---
+const { repo } = Astro.props;
+import { IconBrandGithub } from "@tabler/icons-react";
+---
+
+<div
+  class="w-full p-4 flex items-center justify-between space-x-0 border-zinc-700/0 hover:border-zinc-500/70 bg-zinc-700/30 transition duration-200 hover:bg-zinc-700/50 sm:space-x-2 rounded-md border"
+>
+  <div class="line-clamp-2 text-base flex flex-col w-full gap-y-2">
+    <header class="w-full flex items-start justify-between">
+      <h2 class="font-semibold truncate text-zinc-200">
+        {repo.name}
+      </h2>
+      <div class="flex items-center justify-center gap-x-1">
+        <a
+          href={repo.url}
+          rel="noopener noreferrer"
+          target="_blank"
+          aria-label="undefined Github Link"
+          class="rounded-full bg-white/10 p-1.5 hover:bg-white/20"
+        >
+          <IconBrandGithub className="h-6 w-6 text-zinc-200" />
+        </a>
+      </div>
+    </header>
+    <p class="max-w-80 text-zinc-400 xl:max-w-[calc(100%-32px)]">
+      {repo.description}
+    </p>
+  </div>
+</div>

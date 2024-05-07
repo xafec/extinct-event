@@ -1,12 +1,18 @@
 ---
-const { class: className, href } = Astro.props;
+const { links } = Astro.props;
 ---
 
 <a
-  class={`${className} flex items-center space-x-0 border-white/40 bg-white/5 transition-all hover:scale-105 hover:bg-white/10 sm:space-x-2 cursor-pointer rounded-md border text-sm px-2.5`}
+  class="w-full p-4 flex items-center justify-between space-x-0 border-zinc-700/0 hover:border-zinc-500/70 bg-zinc-700/30 transition duration-200 hover:bg-zinc-700/50 sm:space-x-2 cursor-pointer rounded-md border"
   target="_blank"
-  href={href}
   rel="noreferrer"
+  href={links.url}
 >
+  <div class="line-clamp-2 text-base">
+    <h2 class="font-semibold truncate text-zinc-200">{links.title}</h2>
+    <p class="text-zinc-400">
+      {links.description}
+    </p>
+  </div>
   <slot />
 </a>
