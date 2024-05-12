@@ -15,71 +15,32 @@ import {
   IconBrandVercel,
   IconBrandVscode,
   IconBrandYoutube,
+  type Icon,
 } from "@tabler/icons-react";
+import type { Language } from "../types/language";
 
-export const languages = [
-  {
-    name: "HTML",
-    icon: IconBrandHtml5,
-  },
-  {
-    name: "CSS",
-    icon: IconBrandCss3,
-  },
-  {
-    name: "JavaScript",
-    icon: IconBrandJavascript,
-  },
-  {
-    name: "TypeScript",
-    icon: IconBrandTypescript,
-  },
-  {
-    name: "Sass",
-    icon: IconBrandSass,
-  },
-  {
-    name: "Tailwind",
-    icon: IconBrandTailwind,
-  },
-  {
-    name: "Node.js",
-    icon: IconBrandNodejs,
-  },
-  {
-    name: "C/C++",
-    icon: IconBrandCpp,
-  },
-  {
-    name: "Vue.js",
-    icon: IconBrandVue,
-  },
-  {
-    name: "Nuxt.js",
-    icon: IconBrandNuxt,
-  },
-  {
-    name: "Angular",
-    icon: IconBrandAngular,
-  },
-  {
-    name: "MongoDB",
-    icon: IconBrandMongodb,
-  },
-  {
-    name: "Astro",
-    icon: IconBrandAstro,
-  },
-  {
-    name: "Vercel",
-    icon: IconBrandVercel,
-  },
-  {
-    name: "VSCode",
-    icon: IconBrandVscode,
-  },
-  {
-    name: "YouTube",
-    icon: IconBrandYoutube,
-  },
-];
+const languageIcons = {
+  HTML: IconBrandHtml5,
+  CSS: IconBrandCss3,
+  JavaScript: IconBrandJavascript,
+  TypeScript: IconBrandTypescript,
+  Sass: IconBrandSass,
+  Tailwind: IconBrandTailwind,
+  Nodejs: IconBrandNodejs,
+  "C/C++": IconBrandCpp,
+  Vuejs: IconBrandVue,
+  Nuxtjs: IconBrandNuxt,
+  Angular: IconBrandAngular,
+  MongoDB: IconBrandMongodb,
+  Astro: IconBrandAstro,
+  Vercel: IconBrandVercel,
+  VSCode: IconBrandVscode,
+  YouTube: IconBrandYoutube,
+};
+
+export const languages: Language[] = Object.entries(languageIcons).map(
+  ([name, icon]) => ({
+    name,
+    icon: icon as Icon,
+  })
+);
